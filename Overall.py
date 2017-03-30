@@ -22,29 +22,29 @@ while True:
             sys.exit()
     keys = pygame.key.get_pressed()
     if cooldown <= 0:
-        if  keys[pygame.K_RIGHT] and Character.get_coord()[0] < (500-Character.get_width()):
-            if Environment.get_coord()[0] <= -500:
-                Character.right()
-            else:
+        if keys[pygame.K_RIGHT] and Character.get_coord()[0] < (500-Character.get_width()):
+            if -499 < Environment.get_coord()[0] <= 499:
                 Environment.right_coord(speed)
+            else:
+                Character.right()
             cooldown += cooldown_const
         if keys[pygame.K_LEFT] and Character.get_coord()[0] > 0:
-            if Environment.get_coord()[0] >= 0:
-                Character.left()
-            else:
+            if -499 < Environment.get_coord()[0] <= 499:
                 Environment.left_coord(speed)
+            else:
+                Character.left()
             cooldown += cooldown_const
         if keys[pygame.K_DOWN] and Character.get_coord()[1] < (500-Character.get_length()):
-            if Environment.get_coord()[1] >= 0 or Environment.get_coord()[1] <= -500:
-                Character.down()
-            else:
+            if -499 < Environment.get_coord()[1] <= 499:
                 Environment.down_coord(speed)
+            else:
+                Character.down()
             cooldown += cooldown_const
         if keys[pygame.K_UP] and Character.get_coord()[1] > 0:
-            if Environment.get_coord()[1] >= 0 or Environment.get_coord()[1] <= -500:
-                Character.up()
-            else:
+            if -499 < Environment.get_coord()[1] <= 499:
                 Environment.up_coord(speed)
+            else:
+                Character.up()
             cooldown += cooldown_const
     if cooldown > 0:
         cooldown -= 1
